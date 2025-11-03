@@ -42,23 +42,3 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnGreet = document.getElementById('fn_btnGreet')
     btnGreet.addEventListener("click", handleGroetClick);
 });
-
-//Event koppelen
-// document.addEventListener("DOMContentLoaded", () => {
-//     document.getElementById('fn_btnGreet')
-//         ?.addEventListener("click", handleGroetClick);
-// });
-document.addEventListener("DOMContentLoaded", () => {
-    const btnGreet = document.getElementById('fn_btnGreet')
-    btnGreet.addEventListener("click", handleGroetClick);
-});
-
-//Event koppelen
-// document.addEventListener("DOMContentLoaded", () => {
-//     document.getElementById('fn_btnGreet')
-//         ?.addEventListener("click", handleGroetClick);
-// });
-document.addEventListener("DOMContentLoaded", () => {
-    const btnGreet = document.getElementById('fn_btnGreet')
-    btnGreet.addEventListener("click", handleGroetClick);
-});
