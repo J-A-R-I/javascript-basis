@@ -6,33 +6,45 @@ import * as bootstrap from 'bootstrap'
 
 //eigen js
 
-const namen = [];
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", () =>{
+  let count = 0;
 
+  const valueDisplay = document.getElementById("cc_val");
+  const progressBar = document.getElementById("cc_bar");
 
-    function maakLijstHTML(items) {
-        return items.map(item => `<li class="list-group-item">${item}</li>`).join("");
-    }
+  function clampValue(value) {
+    return Math.max(0, Math.min(100, value));
+  }
 
-    const inp = document.getElementById("fs_text");
+  function updateUI() {
+    valueDisplay.textContent = count;
 
+    progressBar.style.width = count + "%";
+    progressBar.setAttribute("aria-valuenow", count);
+    progressBar.textContent = count + "%";
+  }
 
+  function increaseCounter(increment) {
+    count = clampValue(count + increment);
+    updateUI();
+  }
 
+  function decreaseCounter(decrement) {
+    count = clampValue(count - decrement);
+    updateUI();
+  }
 
-    document.getElementById("fs_upper")
-        ?.addEventListener("click", () => {
-            up()
-        })
+  function resetCounter() {
+    count = 0;
+    updateUI();
+  }
 
-    document.getElementById("fs_lower")
-        ?.addEventListener("click", () =>{
-            lower()
-        })
+  document.getElementById("cc_inc1").addEventListener("click", () => increaseCounter(1));
+  document.getElementById("cc_inc5").addEventListener("click", () => increaseCounter(5));
+  document.getElementById("cc_dec1").addEventListener("click", () => decreaseCounter(1));
+  document.getElementById("cc_reset").addEventListener("click", resetCounter); 
 
-    document.getElementById("fs_cap")
-        ?.addEventListener("click", () =>{
-            capital()
-        })
+  updateUI();
 
-})
+});

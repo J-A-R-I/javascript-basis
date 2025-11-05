@@ -6,33 +6,22 @@ import * as bootstrap from 'bootstrap'
 
 //eigen js
 
-const namen = [];
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", () =>{
+  const inputField = document.getElementById("ic_n");
+  
+  const clampValue = (value) => {
+    if (value > 999) return 999;
+    if (value < -999) return -999;
+    return value;
+  };
 
+  document.getElementById("ic_plus").addEventListener("click", () => {
+    inputField.value = clampValue(Number(inputField.value) + 1);
+  });
 
-    function maakLijstHTML(items) {
-        return items.map(item => `<li class="list-group-item">${item}</li>`).join("");
-    }
+  document.getElementById("ic_minus").addEventListener("click", () => {
+    inputField.value = clampValue(Number(inputField.value) - 1);
+  });
 
-    const inp = document.getElementById("fs_text");
-
-
-
-
-    document.getElementById("fs_upper")
-        ?.addEventListener("click", () => {
-            up()
-        })
-
-    document.getElementById("fs_lower")
-        ?.addEventListener("click", () =>{
-            lower()
-        })
-
-    document.getElementById("fs_cap")
-        ?.addEventListener("click", () =>{
-            capital()
-        })
-
-})
+});

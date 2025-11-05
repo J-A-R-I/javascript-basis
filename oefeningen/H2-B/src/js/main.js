@@ -6,38 +6,39 @@ import * as bootstrap from 'bootstrap'
 
 //eigen js
 
-const Array = []
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", () =>{
+  const input = document.getElementById("sh_base");
+  const output = document.getElementById("sh_out");
 
-    const inp = document.getElementById("sh_base")
-    const run = document.getElementById("sh_run")
-    const out = document.getElementById("sh_out")
+  function toonLijst(items) {
+    output.innerHTML = "";
+    items.forEach(tekst => {
+      const li = document.createElement("li");
+      li.className = "list-group-item";
+      li.textContent = tekst;
+      output.appendChild(li);
+    });
+  }
 
+  function toonShadowing() {
+    let basis = Number(input.value);
+    let x = basis;
+    let regels = [];
 
-    function maakLijstHTML(items) {
-        return items.map(item => `<li class="list-group-item">${item}</li>`).join("");
+    regels.push(`buiten block: x = ${x}`);
+
+    {
+      let x = basis;
+      regels.push(`binnen block: x = ${x}`);
     }
 
-    function maakItems(){
-        const items = inp.value.trim();
+    regels.push(`na block: x = ${x}`);
 
-        if (!items) {
-            alert("⚠️ Geef een naam in!");
-            return;
-        }
-        array.push(items);
+    toonLijst(regels);
+  }
 
-        lijst.innerHTML = maakLijstHTML(array);
-        out.textContent = array.length;
-    }
+  document.getElementById("sh_run")
+    ?.addEventListener("click", toonShadowing);
 
-
-    document.getElementById("sh_run")
-        ?.addEventListener("click", () =>{
-            maakLijstHTML()
-            alert(inp.value)
-        })
-
-
-})
+});

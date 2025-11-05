@@ -5,38 +5,59 @@ import '../scss/styles.scss'
 import * as bootstrap from 'bootstrap'
 
 //eigen js
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", () =>{
+  const statusBadge = document.getElementById("sc_status");
+  const varsList = document.getElementById("sc_vars");
 
-    const glob = document.getElementById("sc_global")
-    const loc = document.getElementById("sc_local")
-    const stat = document.getElementById("sc_status")
+  function updateStatus(tekst, kleur) {
+    statusBadge.textContent = tekst;
+    statusBadge.className = `badge ${kleur}`;
+  }
 
-    function maakLijstHTML(items) {
-        return items.map(item => `<li class="list-group-item">${item}</li>`).join("");
-    }
+  function toonVariabelen(lijst) {
+    varsList.innerHTML = "";
+    lijst.forEach(item => {
+      const li = document.createElement("li");
+      li.className = "list-group-item";
+      li.textContent = item;
+      varsList.appendChild(li);
+    });
+  }
 
-    function global(){
-        stat.textContent = "global"
-    }
-    function local(){
-        stat.textContent = "local"
-    }
+  function globalScope() {
+    var a = "var → function scope";
+    let b = "let → block scope";
+    const c = "const → block scope";
 
-    function setStatus(){
-        stat.backgroundColor = "green"
-    }
+    const zichtbareVariabelen = [
+      `${a}`,
+      `${b}`,
+      `${c}`
+    ];
 
+    toonVariabelen(zichtbareVariabelen);
+    updateStatus("Global uitgevoerd", "text-bg-primary");
+  }
 
+  function localScope() {
+    let letBlock = "let → block scope";
+    const constBlock = "const → block scope";
+    
 
-    document.getElementById("sc_global")
-        ?.addEventListener("click", () =>{
-            global()
-        })
+    const zichtbareVariabelen = [
+      `${letBlock}`,
+      `${constBlock}`,
+    ];
 
-    document.getElementById("sc_local")
-        ?.addEventListener("click", () =>{
-            local()
-        })
+    toonVariabelen(zichtbareVariabelen);
+    updateStatus("Local uitgevoerd", "text-bg-primary");
+  }
 
-})
+  document.getElementById("sc_global")
+    ?.addEventListener("click", globalScope);
+
+  document.getElementById("sc_local")
+    ?.addEventListener("click", localScope);
+
+});
