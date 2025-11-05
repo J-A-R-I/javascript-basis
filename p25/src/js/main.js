@@ -19,27 +19,28 @@ function handleGroetClick(){
     const naam = naamInput.value.trim();
     const leeftijd = leeftijdInput.value
 
-
-    if(!naam){
-        output.className = "alert alert-warning mt-3 mb-0"
-        output.textContent = "Geef een naam in!"
-        return
-    }
-    if(!leeftijd){
-        output.className = "alert alert-warning mt-3 mb-0"
-        output.textContent = "Geef een leeftijd in!"
-        return
-    }
-
     if(!naam && !leeftijd){
-        output.className = "alert alert-warning mt-3 mb-0"
+        output.className = "alert alert-warning mt-3 mb-0 fs-2"
         output.textContent = "je hebt niets ingevuld!"
         return
     }
     const boodschap = maakGroet(naam, leeftijd)
 
+
+    if(!naam){
+        output.className = "alert alert-warning mt-3 mb-0 fs-2"
+        output.textContent = "Geef een naam in!"
+        return
+    }
+    if(!leeftijd){
+        output.className = "alert alert-warning mt-3 mb-0 fs-2"
+        output.textContent = "Geef een leeftijd in!"
+        return
+    }
+
+
     output.textContent = boodschap;
-    output.className="alert alert-success mt-3 mb-0"
+    output.className="alert alert-success mt-3 mb-0 fs-2"
 }
 
 document.addEventListener("DOMContentLoaded", () => {
