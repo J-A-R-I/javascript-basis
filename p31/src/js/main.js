@@ -5,40 +5,44 @@ import '../scss/styles.scss'
 import * as bootstrap from 'bootstrap'
 
 //eigen js
-// Lege array om namen op te slaan
-const namen = [];
+const isEven = num => num % 2 === 0;
 
-// Pure functie -> maakt lijst HTML
-function maakLijstHTML(items) {
-    return items.map(item => `<li class="list-group-item">${item}</li>`).join("");
-}
+const checkEven = () => {
+    const inp = Number(document.getElementById("ev_input").value);
+    const out = document.getElementById("ev_out");
 
-// UI handler
-function voegNaamToe() {
-    const inp = document.getElementById("arr_name");
-    const lijst = document.getElementById("arr_list");
-    const count = document.getElementById("arr_count");
-
-    const naam = inp.value.trim();
-
-    if (!naam) {
-        alert("⚠️ Geef een naam in!");
+    if (!inp) {
+        out.className = "alert alert-warning mb-0";
+        out.textContent = `⚠️ Vul een getal in`;
         return;
     }
+    //manier 1
+    // if (isEven(inp)) {
+    //     out.className = "alert alert-success mb-0";
+    //     out.textContent = `${inp} is EVEN`;
+    // } else {
+    //     out.className = "alert alert-danger mb-0";
+    //     out.textContent = `${inp} is ONEVEN ❌`;
+    // }
 
-    // voeg toe aan array
-    namen.push(naam);
+    //manier 2
+    // const even = isEven(inp);
+    //
+    // out.className = even
+    //     ? "alert alert-success mb-0"
+    //     : "alert alert-danger mb-0";
+    //
+    // out.textContent = even
+    //     ? `${inp} is EVEN`
+    //     : `${inp} is ONEVEN ❌`
 
-    // UI updaten
-    lijst.innerHTML = maakLijstHTML(namen);
-    count.textContent = namen.length;
+    //manier 3
+    const even = isEven(inp);
+    ev_out.className = `alert ${even ? "alert-success" : "alert-danger"} mb-0`;
+    ev_out.textContent = `${inp} is ${even ? "EVEN" : "ONEVEN ❌"}`;
+};
 
-    // veld leegmaken
-    inp.value = "";
-}
-
-// Event listener
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("arr_btn")
-        ?.addEventListener("click", voegNaamToe);
+    document.getElementById("ev_btn")
+        ?.addEventListener("click", checkEven);
 });

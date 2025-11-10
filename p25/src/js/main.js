@@ -4,46 +4,36 @@ import '../scss/styles.scss'
 // Import all of Bootstrap’s JS
 import * as bootstrap from 'bootstrap'
 
+//eigen js
+// ----------------------------------
+// Hoofdstuk 5: Template Literals
+// ----------------------------------
 
-//pure function
-
-function maakGroet(naam, leeftijd){
-    return `Hallo ${naam} je bent ${leeftijd} jaar oud!`
+// Pure function
+function maakWelkomstZin(naam, leeftijd) {
+    return `Welkom ${naam}! Jij bent ${leeftijd} jaar oud.`;
 }
 
-//impure function
-function handleGroetClick(){
-    const naamInput = document.getElementById('n_input')
-    const leeftijdInput = document.getElementById("age_input")
-    const output = document.getElementById('fr_text')
-    const naam = naamInput.value.trim();
-    const leeftijd = leeftijdInput.value
+// UI handler
+function toonWelkomstZin() {
+    const naam = document.getElementById("tl_name").value.trim();
+    const leeftijd = document.getElementById("tl_age").value.trim();
+    const out = document.getElementById("tl_output");
 
-    if(!naam && !leeftijd){
-        output.className = "alert alert-warning mt-3 mb-0 fs-2"
-        output.textContent = "je hebt niets ingevuld!"
-        return
-    }
-    const boodschap = maakGroet(naam, leeftijd)
-
-
-    if(!naam){
-        output.className = "alert alert-warning mt-3 mb-0 fs-2"
-        output.textContent = "Geef een naam in!"
-        return
-    }
-    if(!leeftijd){
-        output.className = "alert alert-warning mt-3 mb-0 fs-2"
-        output.textContent = "Geef een leeftijd in!"
-        return
+    if (!naam || !leeftijd) {
+        out.className = "alert alert-warning mb-0";
+        out.textContent = `⚠️ Vul naam en leeftijd in`;
+        return;
     }
 
+    const tekst = maakWelkomstZin(naam, leeftijd);
 
-    output.textContent = boodschap;
-    output.className="alert alert-success mt-3 mb-0 fs-2"
+    out.className = "alert alert-success mb-0";
+    out.textContent = tekst;
 }
 
+// Event
 document.addEventListener("DOMContentLoaded", () => {
-    const btnGreet = document.getElementById('fr_btn')
-    btnGreet.addEventListener("click", handleGroetClick);
+    document.getElementById("tl_btn")
+        ?.addEventListener("click", toonWelkomstZin);
 });

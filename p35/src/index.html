@@ -9,26 +9,35 @@
 <body>
 
 <div class="card shadow-sm mt-4">
-    <div class="card-header bg-primary text-white">
-        Hoofdstuk 7: Arrays
+    <div class="card-header bg-primary text-white d-flex justify-content-between justify-content-center">
+        <p>Mini opdracht : takenlijst</p>
+        <button type="button" class="btn btn-primary position-relative text-white bg-white">
+            🛒
+            <span  class="arr_count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    99+
+    <span class="visually-hidden">unread messages</span>
+  </span>
+        </button>
     </div>
     <div class="card-body">
 
-        <label class="form-label">Voeg taak toe:</label>
-        <input id="todo_input" class="form-control mb-2" placeholder="bv. taak1">
+        <label class="form-label">Voeg een taak toe:</label>
+        <input id="arr_taak" class="form-control mb-2" placeholder="bv. taak 1">
 
-        <button id="todo_btn" class="btn btn-primary w-100 mb-2">Voeg toe</button>
+        <button id="arr_btn" class="btn btn-primary w-100 mb-2">Voeg taak toe</button>
 
         <div class="alert alert-info mb-2">
-            Taken: <span id="todo_count">0</span>
+            Totaal taken: <span class="arr_count">0</span>
         </div>
 
-        <div id="todo_list" class="d-flex">
+        <div id="arr_list">
 
         </div>
 
     </div>
 </div>
+
+
 
 
 

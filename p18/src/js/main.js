@@ -11,34 +11,23 @@ import * as bootstrap from 'bootstrap'
 
 // naam(waarde)
 
-function geheim() {
-    const secret = "Code Unlocked 🔑";
+function geheimBericht() {
+    const secret = "Code unlocked 🗝️";
 
-    function inner() {
-        return `${secret}`;
+    function leesSecret() {
+        return secret;
     }
 
-    return inner();
+    return leesSecret();
 }
 
-function leesSecret() {
-    const output = document.getElementById("sc2_output");
-
-    //  inner sees outer
-    const bericht = geheim();
-
-    output.className = "alert alert-success mb-0";
-    output.textContent = bericht;
-
-    // try {
-    //     // ❌ buiten de functie proberen de variabele te gebruiken
-    //     console.log(binnen);
-    // } catch (err) {
-    //     console.warn("binnen is niet zichtbaar buiten de functie");
-    // }
+function handleSecret() {
+    const out = document.getElementById("sc2_output");
+    out.className = "alert alert-success mb-0";
+    out.textContent = geheimBericht();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("sc2_btn")
-        ?.addEventListener("click", leesSecret);
+        ?.addEventListener("click", handleSecret);
 });

@@ -5,43 +5,43 @@ import '../scss/styles.scss'
 import * as bootstrap from 'bootstrap'
 
 //eigen js
+// Lege array om namen op te slaan
+// Lege array om namen op te slaan
+/*
+    We bewaren alle taken in een array.
+    Elke keer de gebruiker een taak toevoegt komt die in deze array terecht.
+    Daarna tonen we die taken op het scherm.
+*/
+// ----------------------------------
+// Hoofdstuk 8: Root Nodes
+// ----------------------------------
 
-function darkmode() {
-    const htmlNode = document.documentElement; // <html>
-    // lichte highlight
-
-        htmlNode.style.transition = "1.3s"
-        htmlNode.style.background = "#222";
-        htmlNode.style.color = "#fff"
+function activeerDarkMode() {
+    document.body.style.background = "#222";
+    document.body.style.color = "#fff";
 }
-function lightmode() {
-    const htmlNode = document.documentElement; // <html>
-    // lichte highlight
-    htmlNode.style.transition = "1.3s"
-    htmlNode.style.background = "#e6f3ff";
-    htmlNode.style.color = "#000"
+
+function activeerLightMode() {
+    document.body.style.background = "#fff";
+    document.body.style.color = "#000";
 }
 
-function toonFeedback(tekst) {
+function toonStatus(msg) {
     const out = document.getElementById("dm_status");
     out.className = "alert alert-success mb-0";
-    out.textContent = tekst;
+    out.textContent = msg;
 }
 
-
-// Event listeners
 document.addEventListener("DOMContentLoaded", () => {
-
     document.getElementById("dm_on")
         ?.addEventListener("click", () => {
-            darkmode();
-            toonFeedback("Achtergrond aangepast via <html> node 🎨");
+            activeerDarkMode();
+            toonStatus("Dark mode actief 🌙");
         });
 
     document.getElementById("dm_off")
         ?.addEventListener("click", () => {
-            lightmode();
-            toonFeedback("Achtergrond aangepast via <html> node 🎨");
+            activeerLightMode();
+            toonStatus("Light mode actief ☀️");
         });
 });
-

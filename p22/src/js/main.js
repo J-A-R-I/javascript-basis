@@ -11,50 +11,37 @@ import * as bootstrap from 'bootstrap'
 
 // naam(waarde)
 
-function bepaalFruitInfo(fruit) {
-    const input = fruit.toLowerCase()
+function bepaalFruit(naam) {
+    const f = naam.toLowerCase();
 
+    if (f === "appel") return { text: "Je koos appel", emoji: "🍎" };
+    if (f === "banaan") return { text: "Je koos banaan", emoji: "🍌" };
 
-    if (input === "appel") return { text: "je koos appel", emoji:"🍎"};
-    if (input === "banaan") return { text: "je koos banaan", emoji:"🍌" };
-
-
-    return { text: "Waarschuwing", emoji: "⚠️" };
+    return { text: "Onbekend fruit", emoji: "❓" };
 }
 
-// Impure function (DOM)
-function toonKleur() {
+function toonFruit() {
     const inp = document.getElementById("fr_input");
-    const out = document.getElementById("fr_text");
+    const txt = document.getElementById("fr_text");
     const box = document.getElementById("fr_box");
 
     const waarde = inp.value.trim();
 
     if (!waarde) {
-        out.className = "alert alert-warning mb-2";
-        out.textContent = "⚠️ Geef de naam van fruit in";
-        box.style.background = "#f8f9fa";
-        box.textContent = "Geen fruit";
+        txt.className = "alert alert-warning mb-2";
+        txt.textContent = "⚠️ Vul een fruitsoort in!";
+        box.textContent = "❓";
         return;
     }
 
-    const resultaat = bepaalFruitInfo(waarde);
+    const res = bepaalFruit(waarde);
 
-    if (!resultaat.emoji) {
-        out.className = "alert alert-danger mb-2";
-        out.textContent = resultaat.text;
-        box.style.background = "#f8f9fa";
-        box.textContent = "Onbekend";
-        return;
-    }
-
-    out.className = "alert alert-success mb-2";
-    out.textContent = resultaat.text;
-    box.textContent = resultaat.emoji;
+    txt.className = "alert alert-success mb-2";
+    txt.textContent = res.text;
+    box.textContent = res.emoji;
 }
 
-// Event koppeling
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("fr_btn")
-        ?.addEventListener("click", toonKleur);
+        ?.addEventListener("click", toonFruit);
 });

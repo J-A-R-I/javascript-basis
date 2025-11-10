@@ -6,39 +6,53 @@ import * as bootstrap from 'bootstrap'
 
 //eigen js
 // Lege array om namen op te slaan
-const taken = [];
+// Lege array om namen op te slaan
+/*
+    We bewaren alle taken in een array.
+    Elke keer de gebruiker een taak toevoegt komt die in deze array terecht.
+    Daarna tonen we die taken op het scherm.
+*/
+// ----------------------------------
+// Hoofdstuk 8: Root Nodes
+// ----------------------------------
 
-// Pure functie -> maakt lijst HTML
-function maakLijstHTML(items) {
-    return items.map(item => `<div> <h2><span class="badge text-bg-primary me-1">${item}<button type="button" class="btn-close" aria-label="Close"></button></span> </h2></div>`).join("");
+function plaatsBerichtInBody() {
+    // selecteer de body
+    const bodyNode = document.body;
+
+    // maak een nieuw element
+    const p = document.createElement("p");
+    p.textContent = "Bericht toegevoegd via root node! ";
+    p.className = "text-center mt-2 text-success fw-bold";
+
+    // voeg toe aan body
+    bodyNode.appendChild(p);
 }
 
-// UI handler
-function voegNaamToe() {
-    const inp = document.getElementById("todo_input");
-    const lijst = document.getElementById("todo_list");
-    const count = document.getElementById("todo_count");
+function veranderAchtergrond() {
+    const htmlNode = document.documentElement; // <html>
 
-    const taak = inp.value.trim();
-
-    if (!taak) {
-        alert("⚠️ Geef een naam in!");
-        return;
-    }
-
-    // voeg toe aan array
-    taken.push(taak);
-
-    // UI updaten
-    lijst.innerHTML = maakLijstHTML(taken);
-    count.textContent = taken.length;
-
-    // veld leegmaken
-    inp.value = "";
+    // lichte highlight
+    htmlNode.style.background = "#e6f3ff";
 }
 
-// Event listener
+function toonFeedback(tekst) {
+    const out = document.getElementById("rn_output");
+    out.className = "alert alert-success mb-0";
+    out.textContent = tekst;
+}
+
+// Event listeners
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("todo_btn")
-        ?.addEventListener("click", voegNaamToe);
+    document.getElementById("rn_btnMessage")
+        ?.addEventListener("click", () => {
+            plaatsBerichtInBody();
+            toonFeedback("Bericht toegevoegd aan body ");
+        });
+
+    document.getElementById("rn_btnColor")
+        ?.addEventListener("click", () => {
+            veranderAchtergrond();
+            toonFeedback("Achtergrond aangepast via <html> node 🎨");
+        });
 });

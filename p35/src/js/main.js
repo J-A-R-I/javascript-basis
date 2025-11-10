@@ -6,23 +6,30 @@ import * as bootstrap from 'bootstrap'
 
 //eigen js
 // Lege array om namen op te slaan
+// Lege array om namen op te slaan
+/*
+    We bewaren alle taken in een array.
+    Elke keer de gebruiker een taak toevoegt komt die in deze array terecht.
+    Daarna tonen we die taken op het scherm.
+*/
 const taken = [];
 
 // Pure functie -> maakt lijst HTML
-function maakLijstHTML(items) {
-    return items.map(item => `<div> <h2><span class="badge text-bg-primary me-1">${item}<button type="button" class="btn-close" aria-label="Close"></button></span> </h2></div>`).join("");
+ function maakLijstHTML(items) {
+//     <p className="badge bg-primary py-2 px-3">taak 1</p>
+    return items.map(item => `<p class="badge bg-primary py-2 px-3 me-1">${item}</p>`).join("");
 }
 
 // UI handler
-function voegNaamToe() {
-    const inp = document.getElementById("todo_input");
-    const lijst = document.getElementById("todo_list");
-    const count = document.getElementById("todo_count");
+function voegTaakToe() {
+    const inp = document.getElementById("arr_taak");
+    const lijst = document.getElementById("arr_list");
+    const count = document.querySelector(".arr_count");
 
     const taak = inp.value.trim();
 
     if (!taak) {
-        alert("⚠️ Geef een naam in!");
+        alert("⚠️ Geef een taak in!");
         return;
     }
 
@@ -39,6 +46,6 @@ function voegNaamToe() {
 
 // Event listener
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("todo_btn")
-        ?.addEventListener("click", voegNaamToe);
+    document.getElementById("arr_btn")
+        ?.addEventListener("click", voegTaakToe);
 });

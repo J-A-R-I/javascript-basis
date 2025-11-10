@@ -7,26 +7,30 @@
     <script type="module" src="./js/main.js"></script>
 </head>
 <body>
-
 <div class="card shadow-sm mt-4">
-    <div class="card-header bg-warning text-white">
-        Hoofdstuk 4: Named Functions
+    <div class="card-header bg-info text-white">
+        Hoofdstuk 5: Template Literals
     </div>
-    <div class="card-body" data-protonpass-form="">
+    <div class="card-body">
 
-        <label class="form-label fs-3 fw-bold">Typ een naam:</label>
-        <input id="n_input" class="form-control mb-2 p-2 ps-3 fs-3" placeholder="bv. Jari">
+        <label class="form-label">Naam:</label>
+        <input id="tl_name" class="form-control mb-2" placeholder="bv. Tom">
 
-        <label class="form-label fs-3 fw-bold">Typ een leeftijd:</label>
-        <input id="age_input" type="number" class="form-control mb-2 p-2 ps-3 fs-3" placeholder="bv. 21">
+        <label class="form-label">Leeftijd:</label>
+        <input id="tl_age" type="number" class="form-control mb-2" placeholder="bv. 25">
 
-        <button id="fr_btn" class="btn btn-warning w-100 mb-2 p-4 fs-3 fw-bold">Toon naam + leeftijd</button>
+        <button id="tl_btn" class="btn btn-info w-100 mb-2">Maak welkomstbericht</button>
 
-        <div id="fr_text" class="fs-2 alert alert-secondary mt-3 mb-0 fs-2">Wachten op input...</div>
-
+        <div id="tl_output" class="alert alert-secondary mb-0">
+            Wacht op input…
+        </div>
 
     </div>
 </div>
+
+
+
+
 
 </body>
 </html>
