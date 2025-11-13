@@ -1,5 +1,6 @@
 [
-  { "name": "Laptop", "price": 899 },
-  { "name": "Monitor", "price": 199 },
-  { "name": "Toetsenbord", "price": 49 }
+  { "icon":"💻", "name": "Laptop", "price": 899 },
+  { "icon":"\uD83D\uDDA5\uFE0F", "name": "Monitor", "price": 199 },
+  { "icon":"⌨", "name": "Toetsenbord", "price": 49 }
 ]
+

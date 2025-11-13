@@ -34,9 +34,14 @@ $theme-colors-border-subtle-dark:
 @import "bootstrap/scss/bootstrap";
 
 
-li.todo-done .todo-text {
-  text-decoration: line-through;
-  opacity: 0.6;
+
+
+.cart-added {
+  animation: pulse 0.3s ease;
 }
 
-
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}

@@ -32,11 +32,3 @@ $theme-colors-border-subtle-dark:
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/bootstrap";
-
-
-li.todo-done .todo-text {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-
